@@ -91,5 +91,34 @@ function calculateReviewPercent( bonusEmp ) {
   else {
     newEmpBonusPercent = .10;
   }//end 5 plus rating
-  calculateBonus()
-}
+  calculateDigitBonus( newEmpBonusPercent, bonusEmp );
+}//end calculateReviewPercent function
+
+function calculateDigitBonus( params1, params2 ) {
+  if ( params2.employeeNumber.length == 4 ){
+  params1 += .05;
+}//end 4 digit IF
+  calculate65Bonus( params1, params2 );
+}//end calculateDigitBonus
+
+function calculate65Bonus ( params3, params4 ) {
+  if(params4.annualSalary > 65000){
+    params3 -= 0.1;
+  }//end if
+  calculate013Bonus(params3, params4);
+}//end calculate65Bonus function
+
+function calculate013Bonus(params5, params6) {
+  if (params5 < 0) {
+    params5 = 0;
+  }
+  else if (params5 > .13) {
+    params5 = .13;
+  }
+  console.log(params6.name + ' has a bonus of ' + (params5*params6.annualSalary));
+  let newEmpBonusPercent = params5;
+  let newEmpBonus = (params5 * params6.annualSalary);
+  let newEmpTotalComp = (newEmpBonus + params6.annualSalary);
+  let newEmployeeBonus = new EmployeeBonus(params6.name, newEmpBonusPercent, newEmpTotalComp, newEmpBonus);
+  console.log(params6.annualSalary);
+}//end calculate013Bonus function

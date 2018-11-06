@@ -38,21 +38,58 @@ class EmployeeBonus {
 function startLoop( array ) {
   for (let index = 0; index < array.length; index++) {
     console.log(array[index]); 
-    calculateBonus(array[index])   
+    calculateReviewPercent(array[index])   
   }//end for loop
   return true;
 }//end of startLoop function
 
 console.log( startLoop(employees) );
 
-function calculateBonus( bonusEmp ) {
-  console.log(bonusEmp.name);
-  if (bonusEmp.reviewRating <= 2) {
-    let employeeBonus = new EmployeeBonus ( bonusEmp.name, 0, bonusEmp.annualSalary, 0 );
-    console.log(employeeBonus.name + ' has a bonus of ' + employeeBonus.totalBonus);
-  }//end 2 rating bonus IF
-  else{
-    console.log('oops');
-    
-  }
-}//end calculateBonus function
+// function calculateBonus( bonusEmp ) {
+//   console.log(bonusEmp.name);
+//   let newEmpBonus = 0;
+//   let newEmpBonusPercent = 0;
+//   if (bonusEmp.reviewRating <= 2) {
+//     let employeeBonus = new EmployeeBonus ( bonusEmp.name, newEmpBonusPercent, bonusEmp.annualSalary, newEmpBonus );
+//     console.log(employeeBonus.name + ' has a bonus of ' + employeeBonus.totalBonus);
+//   }//end 2 rating bonus IF
+//   else if (bonusEmp.reviewRating == 3) {
+//     newEmpBonus = bonusEmp.annualSalary * .04;
+//     newEmpBonusPercent = 0.04;
+//     let totalComp = (bonusEmp.annualSalary + (bonusEmp.annualSalary * .04));
+//     let employeeBonus = new EmployeeBonus(bonusEmp.name, newEmpBonusPercent, totalComp , newEmpBonus );
+//     console.log(employeeBonus.name + ' has a bonus of ' + employeeBonus.totalBonus);
+//   }//end 3 rating bonus ELSE
+//   else if (bonusEmp.reviewRating == 4) {
+//     newEmpBonus = bonusEmp.annualSalary * .06;
+//     newEmpBonusPercent = 0.06;
+//     let totalComp = (bonusEmp.annualSalary + (bonusEmp.annualSalary * .06));
+//     let employeeBonus = new EmployeeBonus(bonusEmp.name, newEmpBonusPercent, totalComp, newEmpBonus);
+//     console.log(employeeBonus.name + ' has a bonus of ' + employeeBonus.totalBonus);
+//   }//end 4 rating bonus ELSE
+//   else {
+//       newEmpBonus = bonusEmp.annualSalary * .10;
+//       newEmpBonusPercent = 0.10;
+//       let totalComp = (bonusEmp.annualSalary + (bonusEmp.annualSalary * .10));
+//       let employeeBonus = new EmployeeBonus(bonusEmp.name, newEmpBonusPercent, totalComp, newEmpBonus);
+//       console.log(employeeBonus.name + ' has a bonus of ' + employeeBonus.totalBonus);
+//   }//end 5 rating bonus ELSE IF
+// }//end calculateBonus function
+
+function calculateReviewPercent( bonusEmp ) {
+  console.log( bonusEmp.name );
+  let newEmpBonusPercent;
+  if (bonusEmp.reviewRating <= 2){
+    newEmpBonusPercent = 0;
+  }// end 2 below rating
+  else if ( bonusEmp.reviewRating == 3 ){
+    newEmpBonusPercent = .04;
+  }//end 3 rating
+  else if (bonusEmp.reviewRating == 4) {
+    newEmpBonusPercent = .06;
+  }//end 4 rating
+  else {
+    newEmpBonusPercent = .10;
+  }//end 5 plus rating
+  calculateBonus()
+}

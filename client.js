@@ -118,7 +118,7 @@ function calculate013Bonus(params5, params6) {
   console.log(params6.name + ' has a bonus of ' + (params5*params6.annualSalary));
   let newEmpBonusPercent = params5;
   let newEmpBonus = (params5 * params6.annualSalary);
-  let newEmpTotalComp = (newEmpBonus + params6.annualSalary);
+  let newEmpTotalComp = (newEmpBonus + parseInt(params6.annualSalary));
   let newEmployeeBonus = new EmployeeBonus(params6.name, newEmpBonusPercent, newEmpTotalComp, newEmpBonus);
-  console.log(params6.annualSalary);
+  console.log(newEmployeeBonus);
 }//end calculate013Bonus function
